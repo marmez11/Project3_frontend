@@ -1,4 +1,4 @@
-## Project 3 Habit Tracker
+## Project 3 - Recipe Database
 
 |Title|Recipes for Everyone!|
 |-|-|
