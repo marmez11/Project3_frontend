@@ -32,9 +32,32 @@
 ##### Edamam Recipe Aggregator
 ![Some Text](https://i.imgur.com/nFlFzAX.png)
 
-##### Put other Comps Here
+##### (Put other Comps Here)
 
+### Frontend Routes
+######Home - "/", redirects you to the index.
+######Index - "/recipes", Get request, displays the full set of viewable recipes in card format.
+######New - "/recipes", Post request, sends form data from the create page to add a new recipe.
+######Create - "/recipes/create", Get request, displays the recipe creation page with an empty form.
+######Show - "/recipes/:id", displays the details of the selected recipe.
+######Delete - "/recipes/:id", Delete request, removes the recipe with the given id.
 
+### Component Tree
+ -> App
+ 	-> Header
+	-> Outlet
+		-> Route |path: '/', '/recipes'|
+			-> Index Page
+				-> Card - a single recipe, displayed on the index page.
+			* Action for creating a new recipe
+		-> Route |path: '/recipes/:id'|
+			-> Show Page
+		-> Route |path: '/recipes/create'|
+			-> Create Page
+		-> Route |path: '/recipes/update/:id'|
+			* Action to create a new recipe
+		-> Route |path: '/recipes/delete/:id'|
+			* Action to delete a recipe
 
 ### Schema Diagram
 ![Schema](https://i.imgur.com/dNGNfpf.png)
