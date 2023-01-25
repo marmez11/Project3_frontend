@@ -1,0 +1,46 @@
+.nav {
+    color: white;
+    background-color: gray;
+    text-align: left;
+}
+
+.nav div {
+    padding: 5px;
+}
+
+.addBook {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+h2 {
+    text-emphasis: bold;
+    color: black;
+    text-align: center;
+}
+
+.book {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: blanchedalmond;
+    border: black solid;
+}
+
+/*
+body {
+    background-image: url(https://imgs.search.brave.com/3_2U8B2Bzq7yIa0PZco88zTLzXvm48-UCTbxsk35foE/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5T/VHcxbk0wWVRYcXZz/dHJiWlN2bERBSGFI/YSZwaWQ9QXBp);
+}
+*/
+
+.center-screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: blanchedalmond;
+    border: black solid;
+    width: 900px;
+    height: 400px;
+}
