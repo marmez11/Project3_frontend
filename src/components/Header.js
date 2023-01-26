@@ -1,19 +1,16 @@
-import { useLoaderData, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function Header(props) {
-  const recipe = useLoaderData()
-
-return (
-  <div className="recipe_body">
-    <Link to="/">
-        <div>Home</div>
+  return (
+    <nav className="nav">
+      <Link to="/">
+        <h1>Home</h1>
       </Link>
-      <Link to={`/Recipe/create`}>
-        <div>Create</div>
+      <Link to='/new'>
+        <div>Create Recipe</div>
       </Link>
-      <h2>Team 10's Cookbook</h2>
-  </div>
-)
+    </nav>
+  )
 }
 
 export default Header

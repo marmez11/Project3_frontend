@@ -1,67 +1,60 @@
-import { redirect } from "react-router-dom";
+import {redirect} from "react-router-dom"
 
-const URL = "https://bookmark-backend-ae9o.onrender.com"
+// this is the render site for the hosted backend
+const URL = "https://project3-backend-tay4.onrender.com"
 
-export const createBookmark = async ({request}) => {
+// createRecipe action
+export const createRecipe = async ({request}) => {
+    // need form data
     const formData = await request.formData()
-
-    const newBookmark = {
-        title: formData.get("title"),
-
-        url: formData.get("url")
+    //set up the new recipe according to the recipe schema
+    const newRecipe = {
+        name: formData.get("name"),
+        image: formData.get("image"),
+        ingredients: formData.get("ingredients"),
+        directions: formData.get("directions"),
     }
-
-    await fetch(URL + "/book", {
+    // send the new recipe over
+    await fetch(URL + "/recipe", {
         method: "post",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(newBookmark)
+        body: JSON.stringify(newRecipe),
     })
+    // redirect to index
     return redirect("/")
 }
 
-export const updateBookmark = async ({request, params}) => {
+// updateRecipe action
+export const updateRecipe = async ({request, params}) => {
+    // need form data
     const formData = await request.formData()
-
-    const updatedBookmark = {
-        title: formData.get("title"),
-        url: formData.get("url")
+    // set up new version of recipe
+    const updatedRecipe = {
+        name: formData.get("name"),
+        image: formData.get("image"),
+        ingredients: formData.get("ingredients"),
+        directions: formData.get("directions"),
     }
-
-    await fetch(URL + "/book/" + params.id, {
+    // send the udpated version over
+    await fetch (URL +"/recipe/" + params.id, {
         method: "put",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(updatedBookmark)
+        body: JSON.stringify(updatedRecipe)
     })
-    return redirect('/')
+    //redirect to updated recipe's show page
+    return redirect(`/${params.id}`)
 }
 
-export const deleteBookmark = async ({params}) => {
-    await fetch (URL + "/book/" + params.id, {
+// deleteRecipe action
+export const deleteRecipe = async ({params}) => {
+    // delete the recipe
+    await fetch (URL + "/recipe/" + params.id, {
         method: "delete"
     })
-
+    // redirect to index
     return redirect("/")
-}
-
-
-export const showBookmark = async ({request, params}) => {
-    const formData = await request.formData()
-
-    const showBookmark = {
-        title: formData.get("title"),
-        url: formData.get("url")
-    }
-
-    await fetch(URL + "/book/show/" + params.id, {
-        method: "get",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(showBookmark)
-    })
-    return redirect('/')
 }

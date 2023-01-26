@@ -1,23 +1,29 @@
-import { useLoaderData, Form } from "react-router-dom"
+import { Form, Link, useLoaderData } from "react-router-dom"
+import ReplaceWithBr from "../function" 
 
 function Show(props) {
     const recipe = useLoaderData()
-
     return (
-      <div className="recipe_show_body">
-      <p><img href={`${recipe.image}`} alt="" /> &emsp; <h1>{recipe.name}</h1></p> 
-      <br></br>
-      <input className="Recipe_info_txtbox1" type="text" />
-      <br></br>
-      <input className="Recipe_info_txtbox2" type="text" />
-      <br></br>
-      
-      <button class="show_recipe_index_btn"><a href="/Recipe">Edit Recipe</a></button>
-      <button class="show_recipe_index_btn2"><input type="submit" value="Edit Recipe"/></button>
-      <button class="show_recipe_index_btn_1"><a href="/Recipe">Delete Recipe</a></button>
-      <button class="show_recipe_index_btn2_1"><input type="submit" value="Delete Recipe"/></button>
-</div>
-      )
-    }
-    
-    export default Show
+        <div className="show_page">
+            <h1 id="recipe_name_show_page">{recipe.name}</h1>
+            <img className="recipe_food_img" src={recipe.image} alt={recipe.name} />
+            <h2 id="recipe_ingredients_show_page">Ingredients:</h2>
+            <div className="break_string">
+            {/*<h3 dangerouslySetInnerHTML={{__html: ReplaceWithBr()}} /> */}
+            {CreateArray().map(ingredient => {
+                <dv
+            })}
+            </div>
+            <h2 id="recipe_directions_show_page">Directions: {recipe.directions}</h2>
+            <div className="show_page_UI_functions">
+            <Link to={`/edit/${recipe._id}`}>
+                <h2>Edit</h2>
+            </Link>
+            <Form action={`/delete/${recipe._id}`} method="delete">
+                <input type="submit" value={`Delete ${recipe.name}`} />
+            </Form></div>
+        </div>
+    )
+}
+
+export default Show

@@ -1,24 +1,20 @@
-import { useLoaderData, Form } from "react-router-dom"
+import { Form, useLoaderData } from "react-router-dom"
 
 function Update(props) {
-    const Recipe = useLoaderData()
+    const recipe = useLoaderData()
 
     return (
-        <div className="Recipe">
-          <p><h2>Name of Recipe: </h2><input className="update_recipe_name" type="text" value="Enter the Name of the Recipe...." /></p>
-            <br></br>
-            <p><h2>Image of Recipe: </h2><input className="update_recipe_image" type="text" value="Enter the Url of the Recipe's Image...." /></p>
-            <br></br>
-            <p><h2>Ingredients of Recipe: </h2><input className="update_recipe_ingredients" type="text" value="Enter the Ingredients of the Recipe...." /></p>
-            <br></br>
-            <p><h2>Directions of Recipe: </h2><input className="update_recipe_directions" type="text" value="Enter the Directions of the Recipe...." /></p>
-            <br></br>
-        <Form action={`Recipe/${Recipe._id}`} method="post">
-          <button class="update_recipe"><a href={`/Recipe`}>Update Recipe</a></button>
-          <button class="update_recipe2"><input type="submit" value="Update Recipe"/></button>
-        </Form>
+        <div className="update-page">
+            <h2>Update {recipe.name}</h2>
+            <Form action={`/update/${recipe._id}`} method="post">
+                <input type="input" name="name" defaultValue={recipe.name} /><br/>
+                <input type="input" name="image" defaultValue={recipe.image} /><br/>
+                <input type="input" name="ingredients" defaultValue={recipe.ingredients} /><br/>
+                <input type="directions" name="directions" defaultValue={recipe.directions} /><br/>
+                <button><input type="submit" value={`Update ${recipe.name}`} /></button>
+            </Form>
         </div>
-      )
-    }
-    
-    export default Update
+    )
+}
+
+export default Update

@@ -1,18 +1,16 @@
-import { Form, Link, useLoaderData } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
+
 
 function Index(props) {
-  const recipe = useLoaderData()
+    const recipe = useLoaderData()
 
-  return (
-    <div className="recipe_index_body">
-      {recipe.map(recipes => (
-        <div key={recipes._id} className="recipe_box">
-          <h3>{recipes.name}</h3>
-          <p id="recipe_index"><img href={`${recipes.image}`} alt="" /></p>
+    return recipe.map(recipe => (
+        <div key={recipe._id} className="recipe">
+            <Link to={`/${recipe._id}`}>
+                <h1>{recipe.name}</h1>
+            </Link>
+            <img src={recipe.image} alt={recipe.name} />
         </div>
-      ))}
-    </div>
-  )
+    ))
 }
-
 export default Index
